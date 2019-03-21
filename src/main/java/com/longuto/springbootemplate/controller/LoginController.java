@@ -1,6 +1,6 @@
 package com.longuto.springbootemplate.controller;
 
-import com.longuto.springbootemplate.common.controller.BaseController;
+import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.ResponseBo;
 import io.swagger.annotations.*;
 import org.apache.shiro.authc.*;

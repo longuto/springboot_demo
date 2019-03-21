@@ -1,4 +1,4 @@
-package com.longuto.springbootemplate.common.service;
+package com.longuto.springbootemplate.common.base.service;
 
 import org.springframework.stereotype.Service;
 

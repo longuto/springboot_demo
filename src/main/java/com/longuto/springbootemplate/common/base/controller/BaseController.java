@@ -1,4 +1,4 @@
-package com.longuto.springbootemplate.common.controller;
+package com.longuto.springbootemplate.common.base.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

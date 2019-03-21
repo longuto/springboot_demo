@@ -1,6 +1,6 @@
 package com.longuto.springbootemplate.service;
 
-import com.longuto.springbootemplate.common.service.IService;
+import com.longuto.springbootemplate.common.base.service.IService;
 import com.longuto.springbootemplate.domain.SysPermission;
 import org.springframework.stereotype.Service;
 

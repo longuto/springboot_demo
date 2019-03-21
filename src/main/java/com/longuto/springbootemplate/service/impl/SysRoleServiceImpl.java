@@ -1,6 +1,6 @@
 package com.longuto.springbootemplate.service.impl;
 
-import com.longuto.springbootemplate.common.service.impl.BaseService;
+import com.longuto.springbootemplate.common.base.service.impl.BaseService;
 import com.longuto.springbootemplate.dao.SysRoleMapper;
 import com.longuto.springbootemplate.domain.SysRole;
 import com.longuto.springbootemplate.service.SysRoleService;

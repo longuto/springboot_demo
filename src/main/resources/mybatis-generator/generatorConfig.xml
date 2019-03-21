@@ -9,7 +9,7 @@
     <context id="context" targetRuntime="MyBatis3">
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <!-- 该配置会使生产的Mapper自动继承MyMapper -->
-            <property name="mappers" value="com.longuto.springbootemplate.common.config.MyMapper" />
+            <property name="mappers" value="com.longuto.springbootemplate.common.base.MyMapper" />
             <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
             <property name="caseSensitive" value="false"/>
         </plugin>

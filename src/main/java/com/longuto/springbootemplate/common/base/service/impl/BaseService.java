@@ -1,6 +1,6 @@
-package com.longuto.springbootemplate.common.service.impl;
+package com.longuto.springbootemplate.common.base.service.impl;
 
-import com.longuto.springbootemplate.common.service.IService;
+import com.longuto.springbootemplate.common.base.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
