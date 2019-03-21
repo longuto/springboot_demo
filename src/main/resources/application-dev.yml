@@ -125,6 +125,6 @@ template:
   # shiro redis缓存时长，默认1800秒
   expireIn: 1800
   # session 超时时间，默认1800000毫秒
-  sessionTimeout: 60000
+  sessionTimeout: 1800000
   # rememberMe cookie有效时长，默认86400秒，即一天
   cookieTimeout: 86400
