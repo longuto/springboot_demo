@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longuto.springbootemplate.dao.PubPickMapper">
+  <resultMap id="BaseResultMap" type="com.longuto.springbootemplate.domain.PubPick">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="skuid" jdbcType="INTEGER" property="skuid" />
+    <result column="stockid" jdbcType="INTEGER" property="stockid" />
+    <result column="totalqty" jdbcType="INTEGER" property="totalqty" />
+    <result column="usedqty" jdbcType="INTEGER" property="usedqty" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    pid, `number`, `status`, skuid, stockid, totalqty, usedqty
+  </sql>
+</mapper>

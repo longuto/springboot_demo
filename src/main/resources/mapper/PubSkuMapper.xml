@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longuto.springbootemplate.dao.PubSkuMapper">
+  <resultMap id="BaseResultMap" type="com.longuto.springbootemplate.domain.PubSku">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    sid, `number`, `name`, `status`, `type`, note
+  </sql>
+</mapper>

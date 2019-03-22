@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longuto.springbootemplate.dao.PdaInShelfMapper">
+  <resultMap id="BaseResultMap" type="com.longuto.springbootemplate.domain.PdaInShelf">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="pickid" jdbcType="INTEGER" property="pickid" />
+    <id column="skuid" jdbcType="INTEGER" property="skuid" />
+    <id column="skubatch" jdbcType="VARCHAR" property="skubatch" />
+    <id column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="edittime" jdbcType="TIMESTAMP" property="edittime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    pickid, skuid, skubatch, qty, editor, edittime
+  </sql>
+</mapper>
