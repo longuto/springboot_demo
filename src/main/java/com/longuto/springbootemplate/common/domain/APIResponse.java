@@ -10,9 +10,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 public class APIResponse<T> {
 
-    private static final int CODE_SUCCESS = 0;  // 成功
+    public static final int CODE_SUCCESS = 0;  // 成功
 
-    private static final int CODE_FAIL = -1;    // 失败
+    public static final int CODE_FAIL = -1;    // 失败
 
     public static final int CODE_USER_NO_LOGIN = 10001;  // 用户未登录
 
