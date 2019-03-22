@@ -28,7 +28,6 @@ public class GlobalExceptionHandler {
         code = ((BusinessException) e).getErrorCode();
         String message = "未知异常";
         message = StringUtils.isNotBlank(e.getMessage()) ? e.getMessage() : message;
-        e.printStackTrace();
         return APIResponse.widthCode(code);
     }
 }
