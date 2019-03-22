@@ -18,7 +18,7 @@ public class APIResponse<T> {
 
     public static final int CODE_USER_NO_PERMISS = 10002;  // 用户无权限访问
 
-    @ApiModelProperty(name = "code", value = "业务code码", example = "0")
+    @ApiModelProperty(name = "code", value = "业务code码", notes = "0成功，-1失败，10001未登录，10002无权限")
     private int code;
     @ApiModelProperty(name = "data", value = "业务成功数据")
     private T data;
