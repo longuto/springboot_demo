@@ -1,7 +1,8 @@
 package com.longuto.springbootemplate.controller;
 
 import com.longuto.springbootemplate.common.base.controller.BaseController;
-import com.longuto.springbootemplate.common.domain.ResponseBo;
+import com.longuto.springbootemplate.common.domain.APIResponse;
+import com.longuto.springbootemplate.dto.LoginUserDto;
 import io.swagger.annotations.*;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -10,8 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import static com.longuto.springbootemplate.common.shiro.filter.CustomDefaultWebSessionManager.TOKEN;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Api(description = "用户登录相关Api")
 @RestController
@@ -23,7 +23,7 @@ public class LoginController extends BaseController {
             @ApiImplicitParam(name = "password", value = "密码", required = true, defaultValue = "123456", paramType = "form"),
     })
     @PostMapping("/login")
-    public ResponseBo login(
+    public APIResponse login(
                 @RequestParam(value = "username", required = true) String username,
                 @RequestParam(value = "password", required = true) String password) {
         // 登录失败从request中获取shiro处理的异常信息。
@@ -34,15 +34,17 @@ public class LoginController extends BaseController {
             if (subject != null)
                 subject.logout();
             super.login(token);
-            return ResponseBo.ok().put(TOKEN, getSession().getId());
+            LoginUserDto dto = new LoginUserDto((String) getSession().getId(), getCurrentUser().getUid(),
+                    getCurrentUser().getName(), getCurrentUser().getUsername(), getCurrentUser().getState());
+            return APIResponse.success(dto);
         }  catch (IncorrectCredentialsException e) {
-            return ResponseBo.error("用户名或密码错误");
+            return APIResponse.fail("用户名或密码错误");
         } catch (LockedAccountException e) {
-            return ResponseBo.error("登录失败，该用户已被冻结");
+            return APIResponse.fail("登录失败，该用户已被冻结");
         } catch (AuthenticationException e) {
-            return ResponseBo.error("该用户不存在");
+            return APIResponse.fail("该用户不存在");
         } catch (Exception e) {
-            return ResponseBo.error(e.getMessage());
+            return APIResponse.fail(e.getMessage());
         }
     }
 
@@ -51,10 +53,10 @@ public class LoginController extends BaseController {
      * 未登录，shiro应重定向到登录界面，此处返回未登录状态信息由前端控制跳转页面
      * @return
      */
-    @ApiOperation("未授权接口")
+    @ApiIgnore
     @GetMapping("/unauth")
-    public ResponseBo unauth() {
-        return ResponseBo.warn("未登录");
+    public APIResponse unauth() {
+        return APIResponse.widthCode(APIResponse.CODE_USER_NO_LOGIN).setMsg("未登录");
     }
 
 
@@ -63,9 +65,8 @@ public class LoginController extends BaseController {
             @ApiImplicitParam(name = "token", value = "sessionid", paramType = "header")
     })
     @GetMapping("/test")
-    public ResponseBo test() {
-        return ResponseBo.ok().put("user", getCurrentUser());
-
+    public APIResponse test() {
+        return APIResponse.success(getCurrentUser());
     }
 
 
@@ -75,7 +76,7 @@ public class LoginController extends BaseController {
     })
     @RequiresPermissions("userInfo:del")//删除权限管理
     @GetMapping("/test2")
-    public ResponseBo test2() {
-        return ResponseBo.ok("测试用户体二");
+    public APIResponse test2() {
+        return APIResponse.fail("测试用户体二");
     }
 }
