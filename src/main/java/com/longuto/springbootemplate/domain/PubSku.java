@@ -1,9 +1,10 @@
 package com.longuto.springbootemplate.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "pub_sku")
-public class PubSku {
+public class PubSku implements Serializable {
     /**
      * 主键
      */

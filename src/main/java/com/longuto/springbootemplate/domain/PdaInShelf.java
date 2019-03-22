@@ -1,10 +1,11 @@
 package com.longuto.springbootemplate.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "pda_in_shelf")
-public class PdaInShelf {
+public class PdaInShelf implements Serializable {
     /**
      * 货位主键
      */

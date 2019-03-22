@@ -1,10 +1,11 @@
 package com.longuto.springbootemplate.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "oper_log")
-public class OperLog {
+public class OperLog implements Serializable {
     @Id
     @Column(name = "id")
     private Long id;

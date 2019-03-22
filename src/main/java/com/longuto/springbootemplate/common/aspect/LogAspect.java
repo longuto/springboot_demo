@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.longuto.springbootemplate.common.config.TemplateProperties;
 import com.longuto.springbootemplate.common.utils.HttpContextUtils;
 import com.longuto.springbootemplate.common.utils.IPUtils;
+import com.longuto.springbootemplate.domain.OperLog;
 import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.service.OperLogService;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,6 +34,9 @@ public class LogAspect {
     @Autowired
     private TemplateProperties templateProperties;
 
+    @Autowired
+    private OperLogService operLogService;
+
 
     @Pointcut("@annotation(com.longuto.springbootemplate.common.annotation.Log)")
     public void pointcut() {
@@ -56,8 +61,14 @@ public class LogAspect {
         long time = System.currentTimeMillis() - beginTime;
         if (templateProperties.isOpenAopLog()) {
             UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
-            // 保存日志
-            // TODO: 2019/3/21 保存日志 point获取方法信息，UserInfo获取用户信息
+            // 保存日志 - 保存日志 point获取方法信息，UserInfo获取用户信息
+            OperLog operLog = new OperLog();
+            operLog.setUserid(user.getUid());
+            operLog.setUsername(user.getUsername());
+            operLog.setIp(ip);
+            operLog.setDurationtime(time);
+            log.info("切换前的线程名称为:" + Thread.currentThread().getName());
+            operLogService.saveLog(operLog, point);
         }
         return result;
     }

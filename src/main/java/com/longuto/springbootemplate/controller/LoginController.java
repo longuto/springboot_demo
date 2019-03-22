@@ -1,5 +1,6 @@
 package com.longuto.springbootemplate.controller;
 
+import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
 import com.longuto.springbootemplate.dto.LoginUserDto;
@@ -22,6 +23,7 @@ public class LoginController extends BaseController {
             @ApiImplicitParam(name = "username", value = "用户名", required = true, defaultValue = "admin", paramType = "form"),
             @ApiImplicitParam(name = "password", value = "密码", required = true, defaultValue = "123456", paramType = "form"),
     })
+    @Log(value = "用户登录")
     @PostMapping("/login")
     public APIResponse login(
                 @RequestParam(value = "username", required = true) String username,
@@ -64,6 +66,7 @@ public class LoginController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "token", value = "sessionid", paramType = "header")
     })
+    @Log(value = "登录测试接口一")
     @GetMapping("/test")
     public APIResponse test() {
         return APIResponse.success(getCurrentUser());
@@ -74,6 +77,7 @@ public class LoginController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "token", value = "sessionid", paramType = "header")
     })
+    @Log(value = "登录测试接口二")
     @RequiresPermissions("userInfo:del")//删除权限管理
     @GetMapping("/test2")
     public APIResponse test2() {

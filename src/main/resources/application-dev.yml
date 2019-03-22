@@ -69,6 +69,8 @@ spring:
     proxy-target-class: true
   aop:
     proxy-target-class: true
+  cache:
+    type: redis
 #  servlet:
 #    multipart:
 #      max-file-size: 10Mb
