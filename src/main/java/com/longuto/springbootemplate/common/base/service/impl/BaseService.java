@@ -2,14 +2,13 @@ package com.longuto.springbootemplate.common.base.service.impl;
 
 import com.longuto.springbootemplate.common.base.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
+@Transactional(rollbackFor = Exception.class)
 public abstract class BaseService<T> implements IService<T> {
 
 	@Autowired

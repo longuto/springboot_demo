@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
@@ -24,7 +22,6 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 @Service
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class OperLogServiceImpl extends BaseService<OperLog> implements OperLogService {
 
     private static Logger log = LoggerFactory.getLogger(OperLogServiceImpl.class);
