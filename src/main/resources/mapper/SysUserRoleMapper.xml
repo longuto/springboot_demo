@@ -11,6 +11,10 @@
 
 
   <select id="findUserByRole" resultType="com.longuto.springbootemplate.dto.LoginUserDto">
-      select u.uid, u.name, u.username, u.state from user_info u left join sys_user_role ur on (u.uid = ur.uid) left join sys_role r on (ur.role_id = r.id) WHERE r.id = #{roleId, jdbcType=INTEGER}
+      select u.uid, u.name, u.username, u.state from user_info u left join sys_user_role ur on (u.uid = ur.uid) left join sys_role r on (ur.role_id = r.id)
+      WHERE 1=1
+      <if test="roleId != null and roleId != ''">
+        AND r.id = #{roleId, jdbcType=INTEGER}
+      </if>
     </select>
 </mapper>

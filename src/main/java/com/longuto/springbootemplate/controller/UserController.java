@@ -58,7 +58,7 @@ public class UserController extends BaseController {
 
     @ApiOperation("用户查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "roleId", value = "角色id", required = true, paramType = "query"),
+            @ApiImplicitParam(name = "roleId", value = "角色id", required = false, paramType = "query"),
             @ApiImplicitParam(name = "pageNum", value = "每页数量", required = false, paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页码", required = false, paramType = "query"),
     })
