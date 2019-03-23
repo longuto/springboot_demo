@@ -63,8 +63,10 @@ public class LogAspect {
             UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
             // 保存日志 - 保存日志 point获取方法信息，UserInfo获取用户信息
             OperLog operLog = new OperLog();
-            operLog.setUserid(user.getUid());
-            operLog.setUsername(user.getUsername());
+            if(null != user) {
+                operLog.setUserid(user.getUid());
+                operLog.setUsername(user.getUsername());
+            }
             operLog.setIp(ip);
             operLog.setDurationtime(time);
             log.info("切换前的线程名称为:" + Thread.currentThread().getName());

@@ -22,12 +22,8 @@ public class GlobalExceptionHandler {
 		return APIResponse.widthCode(CODE_USER_NO_PERMISS).setMsg("暂无权限，请联系管理员！");
 	}
 
-    @ExceptionHandler(value = BusinessException.class)
-    public APIResponse businessException(Exception e){
-        int code = APIResponse.CODE_FAIL;
-        code = ((BusinessException) e).getErrorCode();
-        String message = "未知异常";
-        message = StringUtils.isNotBlank(e.getMessage()) ? e.getMessage() : message;
-        return APIResponse.widthCode(code);
-    }
+//    @ExceptionHandler(value = Exception.class)
+//    public APIResponse handleException(Exception e){
+//        return APIResponse.fail(e.getMessage());
+//    }
 }
