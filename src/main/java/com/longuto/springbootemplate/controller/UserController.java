@@ -39,7 +39,7 @@ public class UserController extends BaseController {
                 return APIResponse.fail("用户名已经被注册！");
             }
             UserInfo userTemp = userInfoService.addUserInfo(userInfo, roleId);
-            return APIResponse.success();
+            return APIResponse.success("注册成功");
         } catch (Exception e) {
             return APIResponse.fail("注册用户失败，请联系管理员");
         }
