@@ -8,4 +8,9 @@
     <result column="role_id" jdbcType="INTEGER" property="roleId" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
+
+
+  <select id="findUserByRole" resultType="com.longuto.springbootemplate.dto.LoginUserDto">
+      select u.uid, u.name, u.username, u.state from user_info u left join sys_user_role ur on (u.uid = ur.uid) left join sys_role r on (ur.role_id = r.id) WHERE r.id = #{roleId, jdbcType=INTEGER}
+    </select>
 </mapper>
