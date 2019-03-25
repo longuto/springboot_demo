@@ -1,9 +1,11 @@
 package com.longuto.springbootemplate.dto;
 
+import java.io.Serializable;
+
 /**
  * 登录接口返回用户实体类
  */
-public class LoginUserDto {
+public class LoginUserDto implements Serializable {
 
     public LoginUserDto(String token, Integer uid, String name, String username, Byte state) {
         this.token = token;

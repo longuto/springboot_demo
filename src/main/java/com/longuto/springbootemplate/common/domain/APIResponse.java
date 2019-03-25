@@ -3,12 +3,14 @@ package com.longuto.springbootemplate.common.domain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 /**
  * 返回的参数封装类
  * Created by Donghua.Chen on 2018/4/20.
  */
 @ApiModel
-public class APIResponse<T> {
+public class APIResponse<T> implements Serializable {
 
     public static final int CODE_SUCCESS = 0;  // 成功
 

@@ -14,6 +14,9 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -21,6 +24,7 @@ import springfox.documentation.annotations.ApiIgnore;
  * 用户控制器
  */
 @Api(description = "用户的操作")
+@CacheConfig(cacheNames = "userController")
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController {
@@ -41,6 +45,7 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "name", value = "姓名", required = false, paramType = "form"),
     })
     @Log("注册用户")
+    @CacheEvict(allEntries = true, beforeInvocation = true)
     @PostMapping("/addUser")
     public APIResponse addUser(@ApiIgnore UserInfo userInfo, int roleId) {
         try {
@@ -63,6 +68,7 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "pageSize", value = "页码", required = false, paramType = "query"),
     })
     @Log("查询用户list")
+    @Cacheable
     @GetMapping("/list")
     public APIResponse userList(@ApiIgnore QueryRequest request, Integer roleId) {
         return super.selectByPageNumSize(request, () -> sysUserRoleService.findUserByRole(roleId));
