@@ -173,6 +173,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+<!-- 反射一般用于初始化，完成以后，关闭此插件
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -209,6 +210,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+-->
         </plugins>
     </build>
 </project>
