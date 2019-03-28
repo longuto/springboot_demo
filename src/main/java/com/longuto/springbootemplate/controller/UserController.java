@@ -23,6 +23,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -80,14 +81,23 @@ public class UserController extends BaseController {
     }
 
 
-    @ApiOperation("导出用户list")
-    @Log("导出用户list")
-    @Cacheable
-    @GetMapping("/exportUserList")
-    public APIResponse exportUsers() {
+    @ApiOperation("导出用户list至本地")
+    @Log("导出用户list至本地")
+    @GetMapping("/exportUsers2Service")
+    public APIResponse exportUsers2Service() {
         // 查询所有用户集合
         List<LoginUserDto> users = sysUserRoleService.findUserByRole(null);
-        return FileUtil.createCsv("userinfo", users, LoginUserDto.class);
+        return FileUtil.createExcelByPOIKit("userinfo", users, LoginUserDto.class);
+    }
+
+
+    @ApiOperation("导出用户list至浏览器")
+    @Log("导出用户list至浏览器")
+    @GetMapping("/exportUsers2Explore")
+    public void exportUsers2Explore(HttpServletResponse response) {
+        // 查询所有用户集合
+        List<LoginUserDto> users = sysUserRoleService.findUserByRole(null);
+        ExcelUtils.export(LoginUserDto.class, response).toExcel(users, "userinfo");
     }
 
 }
