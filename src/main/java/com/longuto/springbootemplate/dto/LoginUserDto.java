@@ -28,7 +28,7 @@ public class LoginUserDto implements Serializable {
     @ExportConfig(value = "用户姓名")
     private String name;    // 用户姓名
 
-    @ExportConfig(value = "用户用户名")
+    @ExportConfig(value = "用户名")
     private String username;    // 用户名
 
     @ExportConfig(value = "用户状态", convert = "s:0=禁用,1=启用")
