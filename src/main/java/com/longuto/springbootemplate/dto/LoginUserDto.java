@@ -1,5 +1,7 @@
 package com.longuto.springbootemplate.dto;
 
+import com.longuto.springbootemplate.common.annotation.ExportConfig;
+
 import java.io.Serializable;
 
 /**
@@ -20,12 +22,16 @@ public class LoginUserDto implements Serializable {
 
     private String token;   // 用户token
 
+    @ExportConfig(value = "用户id")
     private Integer uid;    // 用户id
 
+    @ExportConfig(value = "用户姓名")
     private String name;    // 用户姓名
 
+    @ExportConfig(value = "用户用户名")
     private String username;    // 用户名
 
+    @ExportConfig(value = "用户状态", convert = "s:0=禁用,1=启用")
     private Byte state; // 用户状态,0是禁用 1是启用
 
     public String getToken() {

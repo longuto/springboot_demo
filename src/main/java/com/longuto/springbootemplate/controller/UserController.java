@@ -4,7 +4,10 @@ import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
 import com.longuto.springbootemplate.common.domain.QueryRequest;
+import com.longuto.springbootemplate.common.utils.ExcelUtils;
+import com.longuto.springbootemplate.common.utils.FileUtil;
 import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.dto.LoginUserDto;
 import com.longuto.springbootemplate.service.SysUserRoleService;
 import com.longuto.springbootemplate.service.UserInfoService;
 import io.swagger.annotations.Api;
@@ -19,6 +22,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
+
+import java.util.List;
 
 /**
  * 用户控制器
@@ -73,4 +78,16 @@ public class UserController extends BaseController {
     public APIResponse userList(@ApiIgnore QueryRequest request, Integer roleId) {
         return super.selectByPageNumSize(request, () -> sysUserRoleService.findUserByRole(roleId));
     }
+
+
+    @ApiOperation("导出用户list")
+    @Log("导出用户list")
+    @Cacheable
+    @GetMapping("/exportUserList")
+    public APIResponse exportUsers() {
+        // 查询所有用户集合
+        List<LoginUserDto> users = sysUserRoleService.findUserByRole(null);
+        return FileUtil.createCsv("userinfo", users, LoginUserDto.class);
+    }
+
 }
