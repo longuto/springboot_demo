@@ -74,7 +74,7 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "pageSize", value = "页码", required = false, paramType = "query"),
     })
     @Log("查询用户list")
-    @Cacheable(keyGenerator = "keyGenerator")
+    @Cacheable(keyGenerator = "wiselyKeyGenerator")
     @GetMapping("/list")
     public APIResponse userList(@ApiIgnore QueryRequest request, Integer roleId) {
         return super.selectByPageNumSize(request, () -> sysUserRoleService.findUserByRole(roleId));
