@@ -3,6 +3,7 @@ package com.longuto.springbootemplate.domain;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Table(name = "user_info")
@@ -22,6 +23,7 @@ public class UserInfo implements Serializable {
     private String name;
 
     @Column(name = "`password`")
+    @NotEmpty
     private String password;
 
     @Column(name = "salt")
@@ -31,6 +33,7 @@ public class UserInfo implements Serializable {
     private Byte state;
 
     @Column(name = "username")
+    @NotEmpty
     private String username;
 
     /**

@@ -1,16 +1,14 @@
 package com.longuto.springbootemplate.common.handler;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.longuto.springbootemplate.common.domain.APIResponse;
-import com.longuto.springbootemplate.common.exception.BusinessException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +37,7 @@ public class GlobalExceptionHandler {
 	 * @param e ConstraintViolationException
 	 * @return FebsResponse
 	 */
-	@ExceptionHandler(value = ConstraintViolationException.class)
+	@ExceptionHandler(ConstraintViolationException.class)
 	public APIResponse handleConstraintViolationException(ConstraintViolationException e) {
 		StringBuilder message = new StringBuilder();
 		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -69,5 +67,16 @@ public class GlobalExceptionHandler {
 		message = new StringBuilder(message.substring(0, message.length() - 1));
 		return APIResponse.fail(message.toString());
 
+	}
+
+	/**
+	 * 处理切面异常
+	 *
+	 * @param e JsonProcessingException
+	 * @return APIResponse
+	 */
+	@ExceptionHandler(JsonProcessingException.class)
+	public APIResponse handleJsonProcessingException(JsonProcessingException e) {
+		return APIResponse.fail(e.getMessage());
 	}
 }

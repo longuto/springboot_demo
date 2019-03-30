@@ -17,10 +17,12 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -48,7 +50,7 @@ public class UserController extends BaseController {
     })
     @Log("注册用户")
     @PostMapping("/addUser")
-    public APIResponse addUser(@ApiIgnore UserInfo userInfo, int roleId) {
+    public APIResponse addUser(@ApiIgnore @Validated UserInfo userInfo, @NotNull int roleId) {
         try {
             UserInfo user = userInfoService.findByName(userInfo.getUsername());
             if(null != user) {

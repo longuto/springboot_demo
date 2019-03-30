@@ -19,11 +19,11 @@ public class PubSku implements Serializable {
     private Integer sid;
 
     @Column(name = "`number`")
-    @NotEmpty(message = "{not_empty}")
+    @NotEmpty
     private String number;
 
     @Column(name = "`name`")
-    @NotEmpty(message = "{not_empty}")
+    @NotEmpty
     private String name;
 
     /**

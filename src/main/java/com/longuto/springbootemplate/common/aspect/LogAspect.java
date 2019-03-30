@@ -1,6 +1,5 @@
 package com.longuto.springbootemplate.common.aspect;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.longuto.springbootemplate.common.config.TemplateProperties;
 import com.longuto.springbootemplate.common.utils.HttpContextUtils;
 import com.longuto.springbootemplate.common.utils.IPUtils;
@@ -44,15 +43,15 @@ public class LogAspect {
     }
 
     @Around("pointcut()")
-    public Object around(ProceedingJoinPoint point) throws JsonProcessingException {
+    public Object around(ProceedingJoinPoint point) throws Throwable {
         Object result = null;
         long beginTime = System.currentTimeMillis();
-        try {
+//        try {
             // 执行方法
             result = point.proceed();
-        } catch (Throwable e) {
-            log.error(e.getMessage());
-        }
+//        } catch (Throwable e) {   // 把异常抛出去，否则GlobalExceptionHandler无法捕获
+//            log.error(e.getMessage());
+//        }
         // 获取request
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         // 设置IP地址
