@@ -3,6 +3,7 @@ package com.longuto.springbootemplate.controller;
 import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
+import com.longuto.springbootemplate.common.domain.QueryRequest;
 import com.longuto.springbootemplate.domain.PubSku;
 import com.longuto.springbootemplate.service.PubSkuService;
 import io.swagger.annotations.Api;
@@ -49,5 +50,15 @@ public class PubSkuController extends BaseController {
     }
 
 
+    @ApiOperation("sku集合")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "每页数量", required = false, paramType = "query"),
+            @ApiImplicitParam(name = "pageSize", value = "页码", required = false, paramType = "query"),
+    })
+    @Log("sku集合")
+    @GetMapping("/list")
+    public APIResponse skuList(@ApiIgnore QueryRequest queryRequest) {
+        return APIResponse.success(super.selectByPageNumSize(queryRequest, () -> pubSkuService.selectAll()));
+    }
 }
 
