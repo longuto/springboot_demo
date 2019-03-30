@@ -1,6 +1,11 @@
 package com.longuto.springbootemplate.domain;
 
+import com.longuto.springbootemplate.common.annotation.EnumValue;
+import com.longuto.springbootemplate.common.base.EnumValueValidator;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Table(name = "pub_sku")
@@ -14,21 +19,25 @@ public class PubSku implements Serializable {
     private Integer sid;
 
     @Column(name = "`number`")
+    @NotEmpty(message = "{not_empty}")
     private String number;
 
     @Column(name = "`name`")
+    @NotEmpty(message = "{not_empty}")
     private String name;
 
     /**
      * 状态：禁用是0，启用是1
      */
     @Column(name = "`status`")
+    @EnumValue(byteValues = {0, 1}, message = "{must_0_1}")
     private Byte status;
 
     /**
      * 类型：0是无批次号，1是启用批次号
      */
     @Column(name = "`type`")
+    @EnumValue(byteValues = {0, 1}, message = "{must_0_1}")
     private Byte type;
 
     /**
