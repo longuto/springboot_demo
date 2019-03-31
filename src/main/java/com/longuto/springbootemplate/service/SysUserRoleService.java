@@ -1,8 +1,8 @@
 package com.longuto.springbootemplate.service;
 
 import com.longuto.springbootemplate.common.base.service.IService;
-import com.longuto.springbootemplate.domain.SysUserRole;
-import com.longuto.springbootemplate.dto.LoginUserDto;
+import com.longuto.springbootemplate.pojo.po.SysUserRole;
+import com.longuto.springbootemplate.pojo.dto.LoginUserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

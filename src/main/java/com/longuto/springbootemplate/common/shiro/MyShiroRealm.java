@@ -1,8 +1,8 @@
 package com.longuto.springbootemplate.common.shiro;
 
-import com.longuto.springbootemplate.domain.SysPermission;
-import com.longuto.springbootemplate.domain.SysRole;
-import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.pojo.po.SysPermission;
+import com.longuto.springbootemplate.pojo.po.SysRole;
+import com.longuto.springbootemplate.pojo.po.UserInfo;
 import com.longuto.springbootemplate.service.SysPermissionService;
 import com.longuto.springbootemplate.service.SysRoleService;
 import com.longuto.springbootemplate.service.UserInfoService;

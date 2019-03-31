@@ -3,7 +3,7 @@ package com.longuto.springbootemplate.controller;
 import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
-import com.longuto.springbootemplate.dto.LoginUserDto;
+import com.longuto.springbootemplate.pojo.dto.LoginUserDto;
 import io.swagger.annotations.*;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

@@ -1,8 +1,8 @@
 package com.longuto.springbootemplate.dao;
 
 import com.longuto.springbootemplate.common.base.MyMapper;
-import com.longuto.springbootemplate.domain.SysUserRole;
-import com.longuto.springbootemplate.dto.LoginUserDto;
+import com.longuto.springbootemplate.pojo.po.SysUserRole;
+import com.longuto.springbootemplate.pojo.dto.LoginUserDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.longuto.springbootemplate.dao.PubSkuMapper">
-  <resultMap id="BaseResultMap" type="com.longuto.springbootemplate.domain.PubSku">
+  <resultMap id="BaseResultMap" type="com.longuto.springbootemplate.pojo.po.PubSku">
     <!--
       WARNING - @mbg.generated
     -->

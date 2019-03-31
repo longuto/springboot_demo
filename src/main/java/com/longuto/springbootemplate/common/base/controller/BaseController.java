@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.longuto.springbootemplate.common.domain.APIResponse;
 import com.longuto.springbootemplate.common.domain.PageData;
 import com.longuto.springbootemplate.common.domain.QueryRequest;
-import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.pojo.po.UserInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.session.Session;

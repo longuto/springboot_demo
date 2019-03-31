@@ -1,7 +1,7 @@
 package com.longuto.springbootemplate.dao;
 
 import com.longuto.springbootemplate.common.base.MyMapper;
-import com.longuto.springbootemplate.domain.SysPermission;
+import com.longuto.springbootemplate.pojo.po.SysPermission;
 
 import java.util.List;
 

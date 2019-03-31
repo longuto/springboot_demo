@@ -1,4 +1,4 @@
-package com.longuto.springbootemplate.domain;
+package com.longuto.springbootemplate.pojo.po;
 
 import javax.persistence.*;
 

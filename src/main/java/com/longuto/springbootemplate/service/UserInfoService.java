@@ -1,7 +1,7 @@
 package com.longuto.springbootemplate.service;
 
 import com.longuto.springbootemplate.common.base.service.IService;
-import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.pojo.po.UserInfo;
 import org.springframework.stereotype.Service;
 
 @Service

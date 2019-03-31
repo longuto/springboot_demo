@@ -2,8 +2,8 @@ package com.longuto.springbootemplate.service.impl;
 
 import com.longuto.springbootemplate.common.base.service.impl.BaseService;
 import com.longuto.springbootemplate.common.utils.MD5Utils;
-import com.longuto.springbootemplate.domain.SysUserRole;
-import com.longuto.springbootemplate.domain.UserInfo;
+import com.longuto.springbootemplate.pojo.po.SysUserRole;
+import com.longuto.springbootemplate.pojo.po.UserInfo;
 import com.longuto.springbootemplate.service.SysUserRoleService;
 import com.longuto.springbootemplate.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

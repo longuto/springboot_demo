@@ -99,7 +99,7 @@ spring:
 
 mybatis:
   # type-aliases扫描路径
-  type-aliases-package: com.longuto.springbootemplate.domain
+  type-aliases-package: com.longuto.springbootemplate.pojo.po
   # mapper xml实现扫描路径
   mapper-locations: classpath:mapper/*.xml
 logging:

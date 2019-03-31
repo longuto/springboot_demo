@@ -24,7 +24,7 @@
                         connectionURL="jdbc:mysql://127.0.0.1:3306/springbootemplate?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8" userId="root"
                         password="root"/>
 
-        <javaModelGenerator targetPackage="com.longuto.springbootemplate.domain"
+        <javaModelGenerator targetPackage="com.longuto.springbootemplate.pojo.po"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>

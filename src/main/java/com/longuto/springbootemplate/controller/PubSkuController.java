@@ -4,7 +4,7 @@ import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
 import com.longuto.springbootemplate.common.domain.QueryRequest;
-import com.longuto.springbootemplate.domain.PubSku;
+import com.longuto.springbootemplate.pojo.po.PubSku;
 import com.longuto.springbootemplate.service.PubSkuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.service.impl.BaseService;
 import com.longuto.springbootemplate.common.utils.AddressUtils;
-import com.longuto.springbootemplate.domain.OperLog;
+import com.longuto.springbootemplate.pojo.po.OperLog;
 import com.longuto.springbootemplate.service.OperLogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;

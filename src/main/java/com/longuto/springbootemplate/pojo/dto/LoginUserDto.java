@@ -1,4 +1,4 @@
-package com.longuto.springbootemplate.dto;
+package com.longuto.springbootemplate.pojo.dto;
 
 import com.longuto.springbootemplate.common.annotation.ExportConfig;
 

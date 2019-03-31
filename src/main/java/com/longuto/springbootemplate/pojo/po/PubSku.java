@@ -1,11 +1,9 @@
-package com.longuto.springbootemplate.domain;
+package com.longuto.springbootemplate.pojo.po;
 
 import com.longuto.springbootemplate.common.annotation.EnumValue;
-import com.longuto.springbootemplate.common.base.EnumValueValidator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Table(name = "pub_sku")

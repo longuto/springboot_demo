@@ -1,6 +1,6 @@
 package com.longuto.springbootemplate;
 
-import com.longuto.springbootemplate.dto.LoginUserDto;
+import com.longuto.springbootemplate.pojo.dto.LoginUserDto;
 import com.longuto.springbootemplate.service.SysUserRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
