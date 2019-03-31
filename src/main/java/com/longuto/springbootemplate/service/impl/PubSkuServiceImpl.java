@@ -1,7 +1,8 @@
-package com.longuto.springbootemplate.service;
+package com.longuto.springbootemplate.service.impl;
 
 import com.longuto.springbootemplate.common.base.service.impl.BaseService;
 import com.longuto.springbootemplate.pojo.po.PubSku;
+import com.longuto.springbootemplate.service.PubSkuService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

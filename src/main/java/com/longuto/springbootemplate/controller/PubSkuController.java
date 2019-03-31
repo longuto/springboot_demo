@@ -58,7 +58,7 @@ public class PubSkuController extends BaseController {
     @Log("sku集合")
     @GetMapping("/list")
     public APIResponse skuList(@ApiIgnore QueryRequest queryRequest) {
-        return APIResponse.success(super.selectByPageNumSize(queryRequest, () -> pubSkuService.selectAll()));
+        return super.selectByPageNumSize(queryRequest, () -> pubSkuService.selectAll());
     }
 }
 

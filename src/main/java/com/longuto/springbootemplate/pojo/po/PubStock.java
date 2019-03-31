@@ -6,6 +6,20 @@ import javax.persistence.*;
 
 @Table(name = "pub_stock")
 public class PubStock implements Serializable {
+
+    public PubStock(String name, String number, Byte type, Byte status, Date createtime, Date edittime, String editor) {
+        this.name = name;
+        this.number = number;
+        this.type = type;
+        this.status = status;
+        this.createtime = createtime;
+        this.edittime = edittime;
+        this.editor = editor;
+    }
+
+    public PubStock() {
+    }
+
     /**
      * 主键
      */
