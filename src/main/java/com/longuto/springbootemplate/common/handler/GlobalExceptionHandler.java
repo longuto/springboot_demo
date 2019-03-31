@@ -68,15 +68,4 @@ public class GlobalExceptionHandler {
 		return APIResponse.fail(message.toString());
 
 	}
-
-	/**
-	 * 处理切面异常
-	 *
-	 * @param e JsonProcessingException
-	 * @return APIResponse
-	 */
-	@ExceptionHandler(JsonProcessingException.class)
-	public APIResponse handleJsonProcessingException(JsonProcessingException e) {
-		return APIResponse.fail(e.getMessage());
-	}
 }
