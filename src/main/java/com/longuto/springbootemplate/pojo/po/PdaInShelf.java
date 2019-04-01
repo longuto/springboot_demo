@@ -6,6 +6,19 @@ import javax.persistence.*;
 
 @Table(name = "pda_in_shelf")
 public class PdaInShelf implements Serializable {
+
+    public PdaInShelf() {
+    }
+
+    public PdaInShelf(Integer pickid, Integer skuid, String skubatch, Integer qty, String editor, Date edittime) {
+        this.pickid = pickid;
+        this.skuid = skuid;
+        this.skubatch = skubatch;
+        this.qty = qty;
+        this.editor = editor;
+        this.edittime = edittime;
+    }
+
     /**
      * 货位主键
      */
@@ -27,7 +40,6 @@ public class PdaInShelf implements Serializable {
     @Column(name = "skubatch")
     private String skubatch;
 
-    @Id
     @Column(name = "qty")
     private Integer qty;
 
