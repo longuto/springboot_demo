@@ -5,6 +5,19 @@ import java.io.Serializable;
 
 @Table(name = "pub_pick")
 public class PubPick implements Serializable {
+
+    public PubPick() {
+    }
+
+    public PubPick(String number, Byte status, Integer skuid, Integer stockid, Integer totalqty, Integer usedqty) {
+        this.number = number;
+        this.status = status;
+        this.skuid = skuid;
+        this.stockid = stockid;
+        this.totalqty = totalqty;
+        this.usedqty = usedqty;
+    }
+
     /**
      * 主键
      */
