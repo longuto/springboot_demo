@@ -90,9 +90,10 @@ public class PdaInShelfServiceImpl extends BaseService<PdaInShelf> implements Pd
         if(null != shelfQty) {
             if(shelfQty > pdaInShelf.getQty()) {    // 下架
                 // 更新在位表和货位表
-                pdaInShelf.setQty(shelfQty - pdaInShelf.getQty());
-                int pda = this.updateNotNull(pdaInShelf);
-                pubPick.setUsedqty(pdaInShelf.getQty());
+                int opQty = pdaInShelf.getQty();
+                pdaInShelf.setQty(shelfQty - opQty);
+                int pda = this.updateAll(pdaInShelf);
+                pubPick.setUsedqty(pubPick.getUsedqty() - opQty);
                 int pick = pubPickService.updateNotNull(pubPick);
                 if(pda > 0 && pick > 0) {
                     return APIResponse.success(new PdaInPickVo(pubPick, pdaInShelf));
@@ -113,7 +114,7 @@ public class PdaInShelfServiceImpl extends BaseService<PdaInShelf> implements Pd
         } else {
             pubPick.setUsedqty(pubPick.getUsedqty() - pdaInShelf.getQty());
         }
-        int pick = pubPickService.updateNotNull(pubPick);
+        int pick = pubPickService.updateAll(pubPick);
         if(pda > 0 && pick > 0) {
             pdaInShelf.setQty(0);
             return APIResponse.success(new PdaInPickVo(pubPick, pdaInShelf));
