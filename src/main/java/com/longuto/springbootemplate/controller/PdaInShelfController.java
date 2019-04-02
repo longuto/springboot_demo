@@ -4,6 +4,7 @@ import com.longuto.springbootemplate.common.annotation.Log;
 import com.longuto.springbootemplate.common.base.Constant;
 import com.longuto.springbootemplate.common.base.controller.BaseController;
 import com.longuto.springbootemplate.common.domain.APIResponse;
+import com.longuto.springbootemplate.common.domain.QueryRequest;
 import com.longuto.springbootemplate.pojo.po.PdaInShelf;
 import com.longuto.springbootemplate.pojo.po.PubPick;
 import com.longuto.springbootemplate.pojo.po.PubSku;
@@ -18,9 +19,11 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -83,6 +86,18 @@ public class PdaInShelfController extends BaseController {
             return APIResponse.fail("上架失败");
         }
         return APIResponse.success(pdaInPickVo);
+    }
+
+
+    @ApiOperation("pda在位表集合")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "每页数量", required = false, paramType = "query"),
+            @ApiImplicitParam(name = "pageSize", value = "页码", required = false, paramType = "query"),
+    })
+    @Log("pda在位表集合")
+    @GetMapping("/list")
+    public APIResponse pdaInshelfList(@ApiIgnore QueryRequest queryRequest) {
+        return super.selectByPageNumSize(queryRequest, () -> pdaInShelfService.selectAll());
     }
 }
 
