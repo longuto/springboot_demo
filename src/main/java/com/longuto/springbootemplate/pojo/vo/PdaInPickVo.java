@@ -7,6 +7,14 @@ import java.io.Serializable;
 
 public class PdaInPickVo implements Serializable {
 
+    public PdaInPickVo() {
+    }
+
+    public PdaInPickVo(PubPick pubPick, PdaInShelf pdaInShelf) {
+        this.pubPick = pubPick;
+        this.pdaInShelf = pdaInShelf;
+    }
+
     private PubPick pubPick;
 
     private PdaInShelf pdaInShelf;

@@ -99,5 +99,47 @@ public class PdaInShelfController extends BaseController {
     public APIResponse pdaInshelfList(@ApiIgnore QueryRequest queryRequest) {
         return super.selectByPageNumSize(queryRequest, () -> pdaInShelfService.selectAll());
     }
+
+
+
+    @ApiOperation("商品下架")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pickid", value = "仓位id：大于等于1", required = true, paramType = "form"),
+            @ApiImplicitParam(name = "skuNumber", value = "sku编码", required = true, paramType = "form"),
+            @ApiImplicitParam(name = "batch", value = "批次号", required = false, paramType = "form"),
+            @ApiImplicitParam(name = "qty", value = "上架数量:大于等于1", required = true, paramType = "form"),
+    })
+    @Log("商品下架")
+    @PostMapping("/downShelf")
+    public APIResponse downShelf(@Min(1) Integer pickid, @NotEmpty String skuNumber, String batch, @Min(1) Integer qty) {
+        // 1、验证货位
+        PubPick pubPick = pubPickService.selectByKey(pickid);
+        if(null == pubPick) {
+            return APIResponse.fail("仓位id不存在");
+        }
+        // 2、验证sku是否存在， 1)不存在提示
+        //                    2)存在则验证skuid是否与货位的skuid一致，不一致提示，一致则校验是否需要输入批次号
+        List<PubSku> skus = pubSkuService.findSkuByNumber(skuNumber);
+        if(null == skus || skus.size() <= 0) {
+            return APIResponse.fail("skuNumber不存在");
+        }
+        PubSku pubSku = skus.get(0);
+        if(null == pubPick.getSkuid() || pubPick.getSkuid() != pubSku.getSid()) {
+            return APIResponse.fail("货位上不存在此skuId,无法下架");
+        }
+        if(Constant.SKU_BATCH.SKU_OPEN_BATCH == pubSku.getType() && !StringUtils.isNotBlank(batch)) {
+            return APIResponse.fail("该物品需要传入sku批次号");
+        }
+        // 3、查找在位表的是否存在此pickid + skuid + batch 1)再判断下架数量是否超限
+        //                                              2)更新在位表数量和货位数量(以在位表为准)
+        PdaInShelf pdaInShelf = new PdaInShelf(pubPick.getPid(), pubSku.getSid(), Constant.SKU_BATCH.SKU_OPEN_BATCH == pubSku.getType() ? batch : "", qty
+                , null != getCurrentUser() ? getCurrentUser().getName() : null, new Date());
+        // 加入事物处理
+        APIResponse temp = pdaInShelfService.downShelf(pubPick, pdaInShelf);
+        if(null == temp) {
+            return APIResponse.fail("未知异常");
+        }
+        return temp;
+    }
 }
 
