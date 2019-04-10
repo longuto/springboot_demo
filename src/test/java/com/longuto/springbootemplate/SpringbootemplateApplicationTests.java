@@ -12,8 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,6 +53,10 @@ public class SpringbootemplateApplicationTests {
         System.out.println(flag);
         // 4、Reduce
         Optional<String> reduce = list.stream().filter((a) -> a.endsWith("1")).sorted().reduce((a, b) -> a + "#" + b);
-        reduce.ifPresent(System.out::print);
+        reduce.ifPresent(System.out::println);
+
+        // 5、Stream转成Map
+        Map<String, String> collect = list.stream().collect(Collectors.toMap(s -> s + "v1", s -> s + "v2"));
+        collect.forEach((k, v) -> System.out.println(k+v));
     }
 }
