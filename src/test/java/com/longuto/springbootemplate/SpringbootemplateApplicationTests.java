@@ -62,5 +62,6 @@ public class SpringbootemplateApplicationTests {
         // 6、Stream转成Map
         Map<String, String> collect = list.stream().collect(Collectors.toMap(s -> s + "v1", s -> s + "v2"));
         collect.forEach((k, v) -> System.out.println(k+v));
+        collect.entrySet().stream().forEach(a->System.out.println(a.getKey() + "-" + a.getValue()));
     }
 }
