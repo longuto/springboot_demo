@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,11 +52,14 @@ public class SpringbootemplateApplicationTests {
         // 3、Match
         boolean flag = list.stream().filter(a -> a.startsWith("2")).anyMatch(a -> a.endsWith("1"));
         System.out.println(flag);
-        // 4、Reduce
+        // 4、Map
+        List<String> ok = list.stream().map((a) -> a.concat("ok")).collect(Collectors.toList());
+        System.out.println(ok);
+        // 5、Reduce
         Optional<String> reduce = list.stream().filter((a) -> a.endsWith("1")).sorted().reduce((a, b) -> a + "#" + b);
         reduce.ifPresent(System.out::println);
 
-        // 5、Stream转成Map
+        // 6、Stream转成Map
         Map<String, String> collect = list.stream().collect(Collectors.toMap(s -> s + "v1", s -> s + "v2"));
         collect.forEach((k, v) -> System.out.println(k+v));
     }
