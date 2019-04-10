@@ -45,7 +45,7 @@ public class SpringbootemplateApplicationTests {
         list.add("bbbb1");
         list.add("bbbb2");
         // 1、forEach
-        list.stream().filter((a) -> a.endsWith("1")).sorted().forEach(System.out::print);
+        list.stream().filter((a) -> a.endsWith("1")).sorted().forEach(System.out::println);
         // 2、count
         long count = list.stream().filter((a) -> a.endsWith("1")).count();
         System.out.println(count);
