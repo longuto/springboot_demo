@@ -11,7 +11,7 @@ spring:
       # 数据库访问配置, 使用druid数据源 
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.100.109:3306/springbootemplate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.100.100:3306/springbootemplate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
       username: root
       password: root
       # 连接池配置
@@ -80,7 +80,7 @@ spring:
     # Redis数据库索引（默认为0）
     database: 0
     # Redis服务器地址
-    host: 192.168.100.109
+    host: 192.168.100.100
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
