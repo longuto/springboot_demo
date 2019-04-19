@@ -11,7 +11,7 @@ spring:
       # 数据库访问配置, 使用druid数据源 
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.1.164:3306/springbootemplate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://mysql:3306/springbootemplate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
       username: root
       password: root
       # 连接池配置
