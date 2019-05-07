@@ -1,4 +1,4 @@
-package com.longuto.springbootemplate.common.handler;
+package com.longuto.springbootemplate.common.exception;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.longuto.springbootemplate.common.domain.APIResponse;
